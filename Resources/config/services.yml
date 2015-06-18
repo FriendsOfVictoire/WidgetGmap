@@ -1,0 +1,15 @@
+services:
+    victoire_core.widget_gmap_content_resolver:
+        class: Victoire\Bundle\WidgetBundle\Resolver\BaseWidgetContentResolver
+        tags:
+            - { name: victoire_widget.widget_content_resolver, alias: Gmap }
+
+    #alias to the entity
+    victoire.widget.gmap:
+        class: Victoire\Widget\GmapBundle\Entity\WidgetGmap
+
+    #alias to the form
+    victoire.widget.form.gmap:
+        class: Victoire\Widget\GmapBundle\Form\WidgetGmapType
+        tags:
+            - { name: form.type , alias: victoire_widget_form_gmap }

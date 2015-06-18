@@ -1,0 +1,17 @@
+{
+    "name": "friendsofvictoire/gmap-widget",
+    "type": "symfony-bundle",
+    "description": "Victoire Gmap widget",
+    "keywords": ["victoire", "Gmap", "widget"],
+    "homepage": "http://victoire.io",
+    "license": "MIT",
+    "require": {
+        "php"                      : ">=5.3.3",
+        "symfony/framework-bundle" : "~2.3",
+        "victoire/victoire"        : "dev-master"    },
+    "autoload": {
+        "psr-0": { "Victoire\\Widget\\GmapBundle": "" }
+    },
+    "minimum-stability": "dev",
+    "target-dir": "Victoire/Widget/GmapBundle"
+}

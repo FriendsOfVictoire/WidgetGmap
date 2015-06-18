@@ -1,0 +1,11 @@
+victoire_core:
+    widgets:
+        Gmap:
+            class: "Victoire\\Widget\\GmapBundle\\Entity\\WidgetGmap"
+            name: Gmap
+            
+jms_translation:
+    configs:
+        victoire_gmap_bundle:
+            dirs: ["@VictoireGmapBundle"]
+            output_dir: "@VictoireGmapBundle/Resources/translations"
