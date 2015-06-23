@@ -26,6 +26,46 @@
         <source>widget_gmap.form.zoom.label</source>
         <target state="new">zoom</target>
       </trans-unit>
+      <trans-unit id="5" resname="widget_gmap.form.containerWidthLG.label">
+        <source>widget_gmap.form.containerWidthLG.label</source>
+        <target state="new">largeur LG</target>
+      </trans-unit>
+      <trans-unit id="5" resname="widget_gmap.form.containerWidthMD.label">
+        <source>widget_gmap.form.containerWidthMD.label</source>
+        <target state="new">largeur MD</target>
+      </trans-unit>
+      <trans-unit id="5" resname="widget_gmap.form.containerWidthSM.label">
+        <source>widget_gmap.form.containerWidthSM.label</source>
+        <target state="new">largeur SM</target>
+      </trans-unit>
+      <trans-unit id="5" resname="widget_gmap.form.containerWidthXS.label">
+        <source>widget_gmap.form.containerWidthXS.label</source>
+        <target state="new">largeur XS</target>
+      </trans-unit>
+      <trans-unit id="5" resname="widget_gmap.form.containerHeightLG.label">
+        <source>widget_gmap.form.containerHeightLG.label</source>
+        <target state="new">Hauteur LG</target>
+      </trans-unit>
+      <trans-unit id="5" resname="widget_gmap.form.containerHeightMD.label">
+        <source>widget_gmap.form.containerHeightMD.label</source>
+        <target state="new">Hauteur MD</target>
+      </trans-unit>
+      <trans-unit id="5" resname="widget_gmap.form.containerHeightSM.label">
+        <source>widget_gmap.form.containerHeightSM.label</source>
+        <target state="new">Hauteur SM</target>
+      </trans-unit>
+      <trans-unit id="5" resname="widget_gmap.form.containerHeightXS.label">
+        <source>widget_gmap.form.containerHeightXS.label</source>
+        <target state="new">Hauteur XS</target>
+      </trans-unit>
+      <trans-unit id="5" resname="widget_gmap.form.containerHeight.label">
+        <source>widget_gmap.form.containerHeight.label</source>
+        <target state="new">Hauteur</target>
+      </trans-unit>
+      <trans-unit id="5" resname="widget_gmap.form.containerWidth.label">
+        <source>widget_gmap.form.containerWidth.label</source>
+        <target state="new">largeur</target>
+      </trans-unit>
     </body>
   </file>
 </xliff>

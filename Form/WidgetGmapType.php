@@ -27,11 +27,43 @@ class WidgetGmapType extends WidgetType
                     'label' => 'widget_gmap.form.longitude.label'
             ))
             ->add('title', null, array(
-                    'label' => 'widget_gmap.form.title.label'
+                    'label' => 'widget_gmap.form.title.label',
+                    'required' => false,
             ))
             ->add('zoom', null, array(
                     'label' => 'widget_gmap.form.zoom.label'
-            ));
+            ))
+            ->add('containerWidthLG', null, array(
+                    'label' => 'widget_gmap.form.containerWidthLG.label'
+            ))
+            ->add('containerWidthMD', null, array(
+                    'label' => 'widget_gmap.form.containerWidthMD.label'
+            ))
+            ->add('containerWidthSM', null, array(
+                    'label' => 'widget_gmap.form.containerWidthSM.label'
+            ))
+            ->add('containerWidthXS', null, array(
+                    'label' => 'widget_gmap.form.containerWidthXS.label'
+            ))
+            ->add('containerHeightLG', null, array(
+                    'label' => 'widget_gmap.form.containerHeightLG.label'
+            ))
+            ->add('containerHeightMD', null, array(
+                    'label' => 'widget_gmap.form.containerHeightMD.label'
+            ))
+            ->add('containerHeightSM', null, array(
+                    'label' => 'widget_gmap.form.containerHeightSM.label'
+            ))
+            ->add('containerHeightXS', null, array(
+                    'label' => 'widget_gmap.form.containerHeightXS.label'
+            ))
+            ->add('containerHeight', null, array(
+                    'label' => 'widget_gmap.form.containerHeight.label'
+            ))
+            ->add('containerWidth', null, array(
+                    'label' => 'widget_gmap.form.containerWidth.label'
+            ))
+            ;
         parent::buildForm($builder, $options);
 
     }
