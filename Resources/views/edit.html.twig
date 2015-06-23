@@ -1,5 +1,21 @@
 {% extends 'VictoireCoreBundle:Widget:edit.html.twig' %}
 
-{% block form %}
-    {{ parent() }}
-{% endblock form %}
+{% block form_static %}
+    <div id="picker-{{ form.mode.vars.data }}" class="vic-tab-pane {% if form.mode.vars.data == widget.mode %}vic-active{% endif %}">
+        {{ form_start(form) }}
+            {{form_row(form.title)}}
+            <div class="row">
+                <div class="col-md-4">
+                    {{form_row(form.latitude)}}
+                </div>
+                <div class="col-md-4">
+                    {{form_row(form.longitude)}}
+                </div>
+                <div class="col-md-4">
+                    {{form_row(form.zoom)}}
+                </div>
+            </div>
+            {{form_rest(form)}}
+        {{ form_end(form) }}
+    </div>
+{% endblock form_static %}

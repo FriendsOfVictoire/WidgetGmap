@@ -1,18 +1,77 @@
 {% extends 'VictoireCoreBundle:Widget:show.html.twig' %}
 
 {% block content %}
+    <style type="text/css">
+        #gmap_canvas_{{ widget.id }} img{
+            max-width:none!important;
+            background:none!important
+        }
+        .gmap-widget-{{ widget.id }} {
+            overflow: hidden;
+        }
+        
+        .gmap-widget-{{ widget.id }}, #gmap_canvas_{{ widget.id }} {
+         
+            height: {{ widget.containerHeight ?: "250px" }};
+            width: {{ widget.containerWidth ?: "290px" }};
 
+        }
+
+        @media (max-width: 767px) {
+            .gmap-widget-{{ widget.id }}, #gmap_canvas_{{ widget.id }} {
+            {% if widget.containerHeightXS %}
+                height: {{ widget.containerHeightXS ?: "250px" }};
+            {% endif %}
+            {% if widget.containerWidthXS %}
+                width: {{ widget.containerWidthXS ?: "290px" }};    
+            {% endif %}
+            }
+        }
+
+        @media (min-width: 768px) and (max-width: 991px) { 
+            .gmap-widget-{{ widget.id }}, #gmap_canvas_{{ widget.id }} {
+            {% if widget.containerHeightSM %}
+                height: {{ widget.containerHeightSM ?: "250px" }};
+            {% endif %}
+            {% if widget.containerWidthSM %}
+                width: {{ widget.containerWidthSM ?: "290px" }};    
+            {% endif %}
+            }
+        }
+        @media (min-width: 992px) and (max-width: 1199px) { 
+            .gmap-widget-{{ widget.id }}, #gmap_canvas_{{ widget.id }} {
+            {% if widget.containerHeightMD %}
+                height: {{ widget.containerHeightMD ?: "250px" }};
+            {% endif %}
+            {% if widget.containerWidthMD %}
+                width: {{ widget.containerWidthMD ?: "290px" }};    
+            {% endif %}
+            }
+        }
+        @media (min-width: 1200px) { 
+            .gmap-widget-{{ widget.id }}, #gmap_canvas_{{ widget.id }} {
+            {% if widget.containerHeightLG %}
+                height: {{ widget.containerHeightLG ?: "250px" }};
+            {% endif %}
+            {% if widget.containerWidthLG %}
+                width: {{ widget.containerWidthLG ?: "290px" }};    
+            {% endif %}
+            }
+        }st
+
+    </style>
 
     <script src='https://maps.googleapis.com/maps/api/js?v=3.exp'></script>
 
-    <div style='overflow:hidden;height:400px;width:520px;'><div id='gmap_canvas' style='height:400px;width:520px;'></div>
-        <style>#gmap_canvas img{max-width:none!important;background:none!important}</style></div>
-    <a href='http://maps-generator.com/fr'>Maps-Generator</a> <script type='text/javascript' src='http://embedmaps.com/google-maps-authorization/script.js?id=18ac18001641775e66df6a1b87c7048ef60c1bcc'></script><script type='text/javascript'> function init_map(){
+    <div class="gmap-widget-{{ widget.id }}"><div id='gmap_canvas_{{ widget.id }}'></div>
+        <style></style></div>
+    <script type='text/javascript'> function init_map(){
         var myOptions = {
             zoom:{{ zoom }},center:new google.maps.LatLng({{ latitude }}, {{ longitude }}),
             mapTypeId: google.maps.MapTypeId.ROADMAP};
-        map = new google.maps.Map(document.getElementById('gmap_canvas'), myOptions);
+        map = new google.maps.Map(document.getElementById('gmap_canvas_{{widget.id}}'), myOptions);
         marker = new google.maps.Marker({map: map,position: new google.maps.LatLng({{ latitude }},{{ longitude }})});
+        {% if widget.title %}
         infowindow = new google.maps.InfoWindow({
             content: "{{ title }}"
         });
@@ -20,6 +79,7 @@
             infowindow.open(map,marker);
         });
         infowindow.open(map,marker);
+        {% endif %}
     }
     google.maps.event.addDomListener(window, 'load', init_map);
     </script>
