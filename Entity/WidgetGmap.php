@@ -4,12 +4,16 @@ namespace Victoire\Widget\GmapBundle\Entity;
 use Doctrine\ORM\Mapping as ORM;
 use Victoire\Bundle\WidgetBundle\Entity\Widget;
 use Victoire\Bundle\CoreBundle\Annotations as VIC;
+use Symfony\Component\Validator\Constraints AS Assert;
+use Symfony\Component\HttpFoundation\File\UploadedFile;
+
 
 /**
  * WidgetGmap
  *
  * @ORM\Table("vic_widget_gmap")
  * @ORM\Entity
+ * @ORM\HasLifecycleCallbacks
  */
 class WidgetGmap extends Widget
 {
@@ -38,6 +42,13 @@ class WidgetGmap extends Widget
     /**
      * @var string
      *
+     * @ORM\Column(name="hideMarker", type="boolean", nullable=true)
+     */
+    protected $hideMarker;
+
+    /**
+     * @var string
+     *
      * @ORM\Column(name="title", type="string", length=255, nullable=true)
      * @VIC\ReceiverProperty("textable")
      */
@@ -49,6 +60,7 @@ class WidgetGmap extends Widget
      * @ORM\Column(name="container_width_lg", type="string", length=255, nullable=true)
      */
     protected $containerWidthLG;
+
     /**
      * @var string
      *
@@ -61,12 +73,14 @@ class WidgetGmap extends Widget
      * @ORM\Column(name="container_width_sm", type="string", length=255, nullable=true)
      */
     protected $containerWidthSM;
+
     /**
      * @var string
      *
      * @ORM\Column(name="container_width_xs", type="string", length=255, nullable=true)
      */
     protected $containerWidthXS;
+
     /**
      * @var string
      *
@@ -79,12 +93,14 @@ class WidgetGmap extends Widget
      * @ORM\Column(name="container_height_md", type="string", length=255, nullable=true)
      */
     protected $containerHeightMD;
+
     /**
      * @var string
      *
      * @ORM\Column(name="container_height_sm", type="string", length=255, nullable=true)
      */
     protected $containerHeightSM;
+
     /**
      * @var string
      *
@@ -92,18 +108,32 @@ class WidgetGmap extends Widget
      */
     protected $containerHeightXS;
 
-/**
+    /**
     * @var string
     *
     * @ORM\Column(name="container_height", type="string", length=255, nullable=true)
     */
     protected $containerHeight;
+
     /**
     * @var string
     *
     * @ORM\Column(name="container_width", type="string", length=255, nullable=true)
     */
     protected $containerWidth;
+
+    /**
+     * @ORM\Column(type="string", length=255, nullable=true)
+     */
+    public $pathToKml;
+    /**
+     * @Assert\File(
+     *     mimeTypes = {"application/xml"},
+     *     mimeTypesMessage = "Choose a KML file"
+     * )
+     */
+    public $kmlFile;
+
     /**
     * @return string
     */
@@ -359,4 +389,85 @@ class WidgetGmap extends Widget
         return $this->zoom;
     }
 
+
+    /**
+     * Set hideMarker
+     *
+     * @param string $hideMarker
+     */
+    public function setHideMarker($hideMarker)
+    {
+        $this->hideMarker = $hideMarker;
+
+        return $this;
+    }
+
+    /**
+     * Get hideMarker
+     *
+     * @return string
+     */
+    public function isHideMarker()
+    {
+        return $this->hideMarker;
+    }
+
+    public function getAbsoluteKmlPath()
+    {
+        return null === $this->pathToKml ? null : $this->getUploadRootDir().'/'.$this->pathToKml;
+    }
+
+    public function getWebKmlPath()
+    {
+        return null === $this->pathToKml ? null : $this->getUploadDir().'/'.$this->pathToKml;
+    }
+
+    protected function getUploadRootDir()
+    {
+        $dir = __DIR__.'/../../../../../../../web/'.$this->getUploadDir();
+        if(!file_exists($dir)){
+            mkdir(__DIR__.'/../../../../../../../web/'.$this->getUploadDir(), 0777);
+        }
+        return $dir;
+    }
+
+    protected function getUploadDir()
+    {
+        return 'uploads/maps';
+    }
+
+    /**
+     * @ORM\PrePersist()
+     * @ORM\PreUpdate()
+     */
+    public function preUpload()
+    {
+        if (null !== $this->kmlFile) {
+            $this->pathToKml = sha1(uniqid(mt_rand(), true)).'.kml';
+        }
+    }
+
+    /**
+     * @ORM\PostPersist()
+     * @ORM\PostUpdate()
+     */
+    public function upload()
+    {
+        if (null === $this->kmlFile) {
+            return;
+        }
+        $this->kmlFile->move($this->getUploadRootDir(), $this->pathToKml);
+
+        unset($this->kmlFile);
+    }
+
+    /**
+     * @ORM\PostRemove()
+     */
+    public function removeUpload()
+    {
+        if ($file = $this->getAbsoluteKmlPath()) {
+            unlink($file);
+        }
+    }
 }
