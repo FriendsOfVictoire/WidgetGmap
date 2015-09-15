@@ -26,9 +26,17 @@ class WidgetGmapType extends WidgetType
             ->add('longitude', null, array(
                     'label' => 'widget_gmap.form.longitude.label'
             ))
-            ->add('title', null, array(
-                    'label' => 'widget_gmap.form.title.label',
+            ->add('hideMarker', null, array(
+                    'label' => 'widget_gmap.form.hideMarker.label',
                     'required' => false,
+            ))
+            ->add('title', null, array(
+                'label' => 'widget_gmap.form.title.label',
+                'required' => false,
+            ))
+            ->add('kmlFile', null, array(
+                'label' => 'widget_gmap.form.kmlFile.label',
+                'required' => false
             ))
             ->add('zoom', null, array(
                     'label' => 'widget_gmap.form.zoom.label'
@@ -80,7 +88,8 @@ class WidgetGmapType extends WidgetType
         $resolver->setDefaults(array(
             'data_class'         => 'Victoire\Widget\GmapBundle\Entity\WidgetGmap',
             'widget'             => 'Gmap',
-            'translation_domain' => 'victoire'
+            'translation_domain' => 'victoire',
+            'enctype'           => "multipart/form-data"
         ));
     }
 
