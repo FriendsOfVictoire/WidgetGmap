@@ -16,31 +16,43 @@
       </trans-unit>
       <trans-unit id="3" resname="widget_gmap.form.latitude.label">
         <source>widget_gmap.form.latitude.label</source>
-        <target state="new">latitude</target>
+        <target state="new">Latitude</target>
       </trans-unit>
       <trans-unit id="4" resname="widget_gmap.form.longitude.label">
         <source>widget_gmap.form.longitude.label</source>
-        <target state="new">longitude</target>
+        <target state="new">Longitude</target>
       </trans-unit>
       <trans-unit id="5" resname="widget_gmap.form.zoom.label">
         <source>widget_gmap.form.zoom.label</source>
-        <target state="new">zoom</target>
+        <target state="new">Zoom</target>
+      </trans-unit>
+      <trans-unit id="5" resname="widget_gmap.form.title.label">
+        <source>widget_gmap.form.title.label</source>
+        <target state="new">Titre</target>
+      </trans-unit>
+      <trans-unit id="5" resname="widget_gmap.form.hideMarker.label">
+        <source>widget_gmap.form.hideMarker.label</source>
+        <target state="new">Cacher le pointeur?</target>
+      </trans-unit>
+      <trans-unit id="5" resname="widget_gmap.form.kmlFile.label ">
+        <source>widget_gmap.form.kmlFile.label </source>
+        <target state="new">Fichier Kml</target>
       </trans-unit>
       <trans-unit id="5" resname="widget_gmap.form.containerWidthLG.label">
         <source>widget_gmap.form.containerWidthLG.label</source>
-        <target state="new">largeur LG</target>
+        <target state="new">Largeur LG</target>
       </trans-unit>
       <trans-unit id="5" resname="widget_gmap.form.containerWidthMD.label">
         <source>widget_gmap.form.containerWidthMD.label</source>
-        <target state="new">largeur MD</target>
+        <target state="new">Largeur MD</target>
       </trans-unit>
       <trans-unit id="5" resname="widget_gmap.form.containerWidthSM.label">
         <source>widget_gmap.form.containerWidthSM.label</source>
-        <target state="new">largeur SM</target>
+        <target state="new">Largeur SM</target>
       </trans-unit>
       <trans-unit id="5" resname="widget_gmap.form.containerWidthXS.label">
         <source>widget_gmap.form.containerWidthXS.label</source>
-        <target state="new">largeur XS</target>
+        <target state="new">Largeur XS</target>
       </trans-unit>
       <trans-unit id="5" resname="widget_gmap.form.containerHeightLG.label">
         <source>widget_gmap.form.containerHeightLG.label</source>
@@ -64,7 +76,15 @@
       </trans-unit>
       <trans-unit id="5" resname="widget_gmap.form.containerWidth.label">
         <source>widget_gmap.form.containerWidth.label</source>
-        <target state="new">largeur</target>
+        <target state="new">Largeur</target>
+      </trans-unit>
+      <trans-unit id="5" resname="widget_gmap.form.KmlFile.exist.label">
+        <source>widget_gmap.form.KmlFile.exist.label</source>
+        <target state="new">Un fichier est déja présent</target>
+      </trans-unit>
+      <trans-unit id="5" resname="widget_gmap.form.kmlFile.label">
+        <source>widget_gmap.form.kmlFile.label</source>
+        <target state="new">Fichier Kml</target>
       </trans-unit>
     </body>
   </file>

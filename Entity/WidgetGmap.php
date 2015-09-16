@@ -4,12 +4,16 @@ namespace Victoire\Widget\GmapBundle\Entity;
 use Doctrine\ORM\Mapping as ORM;
 use Victoire\Bundle\WidgetBundle\Entity\Widget;
 use Victoire\Bundle\CoreBundle\Annotations as VIC;
+use Symfony\Component\Validator\Constraints AS Assert;
+use Symfony\Component\HttpFoundation\File\UploadedFile;
+
 
 /**
  * WidgetGmap
  *
  * @ORM\Table("vic_widget_gmap")
  * @ORM\Entity
+ * @ORM\HasLifecycleCallbacks
  */
 class WidgetGmap extends Widget
 {
@@ -38,231 +42,29 @@ class WidgetGmap extends Widget
     /**
      * @var string
      *
+     * @ORM\Column(name="hideMarker", type="boolean", nullable=true)
+     */
+    protected $hideMarker;
+
+    /**
+     * @var string
+     *
      * @ORM\Column(name="title", type="string", length=255, nullable=true)
      * @VIC\ReceiverProperty("textable")
      */
     protected $title;
 
     /**
-     * @var string
-     *
-     * @ORM\Column(name="container_width_lg", type="string", length=255, nullable=true)
+     * @ORM\Column(type="string", length=255, nullable=true)
      */
-    protected $containerWidthLG;
+    public $pathToKml;
     /**
-     * @var string
-     *
-     * @ORM\Column(name="container_width_md", type="string", length=255, nullable=true)
+     * @Assert\File(
+     *     mimeTypes = {"application/xml"},
+     *     mimeTypesMessage = "Choose a KML file"
+     * )
      */
-    protected $containerWidthMD;
-    /**
-     * @var string
-     *
-     * @ORM\Column(name="container_width_sm", type="string", length=255, nullable=true)
-     */
-    protected $containerWidthSM;
-    /**
-     * @var string
-     *
-     * @ORM\Column(name="container_width_xs", type="string", length=255, nullable=true)
-     */
-    protected $containerWidthXS;
-    /**
-     * @var string
-     *
-     * @ORM\Column(name="container_height_lg", type="string", length=255, nullable=true)
-     */
-    protected $containerHeightLG;
-    /**
-     * @var string
-     *
-     * @ORM\Column(name="container_height_md", type="string", length=255, nullable=true)
-     */
-    protected $containerHeightMD;
-    /**
-     * @var string
-     *
-     * @ORM\Column(name="container_height_sm", type="string", length=255, nullable=true)
-     */
-    protected $containerHeightSM;
-    /**
-     * @var string
-     *
-     * @ORM\Column(name="container_height_xs", type="string", length=255, nullable=true)
-     */
-    protected $containerHeightXS;
-
-/**
-    * @var string
-    *
-    * @ORM\Column(name="container_height", type="string", length=255, nullable=true)
-    */
-    protected $containerHeight;
-    /**
-    * @var string
-    *
-    * @ORM\Column(name="container_width", type="string", length=255, nullable=true)
-    */
-    protected $containerWidth;
-    /**
-    * @return string
-    */
-    public function getContainerHeight()
-    {
-        return $this->containerHeight;
-    }
-
-    /**
-    * @param string $containerHeight
-    */
-    public function setContainerHeight($containerHeight)
-    {
-        $this->containerHeight = $containerHeight;
-    }
-
-    /**
-    * @return string
-    */
-    public function getContainerWidth()
-    {
-        return $this->containerWidth;
-    }
-
-    /**
-    * @param string $containerWidth
-    */
-    public function setContainerWidth($containerWidth)
-    {
-        $this->containerWidth = $containerWidth;
-    }
-
-    /**
-    * @return string
-    */
-    public function getContainerHeightLG()
-    {
-        return $this->containerHeightLG;
-    }
-
-    /**
-    * @param string $containerHeightLG
-    */
-    public function setContainerHeightLG($containerHeightLG)
-    {
-        $this->containerHeightLG = $containerHeightLG;
-    }
-
-    /**
-    * @return string
-    */
-    public function getContainerHeightMD()
-    {
-        return $this->containerHeightMD;
-    }
-
-    /**
-    * @param string $containerHeightMD
-    */
-    public function setContainerHeightMD($containerHeightMD)
-    {
-        $this->containerHeightMD = $containerHeightMD;
-    }
-
-    /**
-    * @return string
-    */
-    public function getContainerHeightSM()
-    {
-        return $this->containerHeightSM;
-    }
-
-    /**
-    * @param string $containerHeightSM
-    */
-    public function setContainerHeightSM($containerHeightSM)
-    {
-        $this->containerHeightSM = $containerHeightSM;
-    }
-
-    /**
-    * @return string
-    */
-    public function getContainerHeightXS()
-    {
-        return $this->containerHeightXS;
-    }
-
-    /**
-    * @param string $containerHeightXS
-    */
-    public function setContainerHeightXS($containerHeightXS)
-    {
-        $this->containerHeightXS = $containerHeightXS;
-    }
-
-    /**
-    * @return string
-    */
-    public function getContainerWidthLG()
-    {
-        return $this->containerWidthLG;
-    }
-
-    /**
-    * @param string $containerWidthLG
-    */
-    public function setContainerWidthLG($containerWidthLG)
-    {
-        $this->containerWidthLG = $containerWidthLG;
-    }
-
-    /**
-    * @return string
-    */
-    public function getContainerWidthMD()
-    {
-        return $this->containerWidthMD;
-    }
-
-    /**
-    * @param string $containerWidthMD
-    */
-    public function setContainerWidthMD($containerWidthMD)
-    {
-        $this->containerWidthMD = $containerWidthMD;
-    }
-
-    /**
-    * @return string
-    */
-    public function getContainerWidthSM()
-    {
-        return $this->containerWidthSM;
-    }
-
-    /**
-    * @param string $containerWidthSM
-    */
-    public function setContainerWidthSM($containerWidthSM)
-    {
-        $this->containerWidthSM = $containerWidthSM;
-    }
-
-    /**
-    * @return string
-    */
-    public function getContainerWidthXS()
-    {
-        return $this->containerWidthXS;
-    }
-
-    /**
-    * @param string $containerWidthXS
-    */
-    public function setContainerWidthXS($containerWidthXS)
-    {
-        $this->containerWidthXS = $containerWidthXS;
-    }
+    public $kmlFile;
 
     /**
      * @return string
@@ -359,4 +161,85 @@ class WidgetGmap extends Widget
         return $this->zoom;
     }
 
+
+    /**
+     * Set hideMarker
+     *
+     * @param string $hideMarker
+     */
+    public function setHideMarker($hideMarker)
+    {
+        $this->hideMarker = $hideMarker;
+
+        return $this;
+    }
+
+    /**
+     * Get hideMarker
+     *
+     * @return string
+     */
+    public function isHideMarker()
+    {
+        return $this->hideMarker;
+    }
+
+    public function getAbsoluteKmlPath()
+    {
+        return null === $this->pathToKml ? null : $this->getUploadRootDir().'/'.$this->pathToKml;
+    }
+
+    public function getWebKmlPath()
+    {
+        return null === $this->pathToKml ? null : $this->getUploadDir().'/'.$this->pathToKml;
+    }
+
+    protected function getUploadRootDir()
+    {
+        $dir = __DIR__.'/../../../../../../../web/'.$this->getUploadDir();
+        if(!file_exists($dir)){
+            mkdir(__DIR__.'/../../../../../../../web/'.$this->getUploadDir(), 0777);
+        }
+        return $dir;
+    }
+
+    protected function getUploadDir()
+    {
+        return 'uploads/maps';
+    }
+
+    /**
+     * @ORM\PrePersist()
+     * @ORM\PreUpdate()
+     */
+    public function preUpload()
+    {
+        if (null !== $this->kmlFile) {
+            $this->pathToKml = sha1(uniqid(mt_rand(), true)).'.kml';
+        }
+    }
+
+    /**
+     * @ORM\PostPersist()
+     * @ORM\PostUpdate()
+     */
+    public function upload()
+    {
+        if (null === $this->kmlFile) {
+            return;
+        }
+        $this->kmlFile->move($this->getUploadRootDir(), $this->pathToKml);
+
+        unset($this->kmlFile);
+    }
+
+    /**
+     * @ORM\PostRemove()
+     */
+    public function removeUpload()
+    {
+        if ($file = $this->getAbsoluteKmlPath()) {
+            unlink($file);
+        }
+    }
 }

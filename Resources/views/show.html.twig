@@ -9,9 +9,9 @@
         .gmap-widget-{{ widget.id }} {
             overflow: hidden;
         }
-        
+
         .gmap-widget-{{ widget.id }}, #gmap_canvas_{{ widget.id }} {
-         
+
             height: {{ widget.containerHeight ?: "250px" }};
             width: {{ widget.containerWidth ?: "290px" }};
 
@@ -23,41 +23,41 @@
                 height: {{ widget.containerHeightXS ?: "250px" }};
             {% endif %}
             {% if widget.containerWidthXS %}
-                width: {{ widget.containerWidthXS ?: "290px" }};    
+                width: {{ widget.containerWidthXS ?: "290px" }};
             {% endif %}
             }
         }
 
-        @media (min-width: 768px) and (max-width: 991px) { 
+        @media (min-width: 768px) and (max-width: 991px) {
             .gmap-widget-{{ widget.id }}, #gmap_canvas_{{ widget.id }} {
             {% if widget.containerHeightSM %}
                 height: {{ widget.containerHeightSM ?: "250px" }};
             {% endif %}
             {% if widget.containerWidthSM %}
-                width: {{ widget.containerWidthSM ?: "290px" }};    
+                width: {{ widget.containerWidthSM ?: "290px" }};
             {% endif %}
             }
         }
-        @media (min-width: 992px) and (max-width: 1199px) { 
+        @media (min-width: 992px) and (max-width: 1199px) {
             .gmap-widget-{{ widget.id }}, #gmap_canvas_{{ widget.id }} {
             {% if widget.containerHeightMD %}
                 height: {{ widget.containerHeightMD ?: "250px" }};
             {% endif %}
             {% if widget.containerWidthMD %}
-                width: {{ widget.containerWidthMD ?: "290px" }};    
+                width: {{ widget.containerWidthMD ?: "290px" }};
             {% endif %}
             }
         }
-        @media (min-width: 1200px) { 
+        @media (min-width: 1200px) {
             .gmap-widget-{{ widget.id }}, #gmap_canvas_{{ widget.id }} {
             {% if widget.containerHeightLG %}
                 height: {{ widget.containerHeightLG ?: "250px" }};
             {% endif %}
             {% if widget.containerWidthLG %}
-                width: {{ widget.containerWidthLG ?: "290px" }};    
+                width: {{ widget.containerWidthLG ?: "290px" }};
             {% endif %}
             }
-        }st
+        }
 
     </style>
 
@@ -65,21 +65,31 @@
 
     <div class="gmap-widget-{{ widget.id }}"><div id='gmap_canvas_{{ widget.id }}'></div>
         <style></style></div>
-    <script type='text/javascript'> function init_map(){
+    <script type='text/javascript'>
+        function init_map(){
         var myOptions = {
             zoom:{{ zoom }},center:new google.maps.LatLng({{ latitude }}, {{ longitude }}),
-            mapTypeId: google.maps.MapTypeId.ROADMAP};
+            mapTypeId: google.maps.MapTypeId.ROADMAP
+        };
         map = new google.maps.Map(document.getElementById('gmap_canvas_{{widget.id}}'), myOptions);
-        marker = new google.maps.Marker({map: map,position: new google.maps.LatLng({{ latitude }},{{ longitude }})});
-        {% if widget.title %}
-        infowindow = new google.maps.InfoWindow({
-            content: "{{ title }}"
-        });
-        google.maps.event.addListener(marker, 'click', function(){
-            infowindow.open(map,marker);
-        });
-        infowindow.open(map,marker);
+        {% if not widget.hideMarker %}
+            marker = new google.maps.Marker({map: map,position: new google.maps.LatLng({{ latitude }},{{ longitude }})});
+            {% if widget.title %}
+                infowindow = new google.maps.InfoWindow({
+                    content: "{{ title }}"
+                });
+                google.maps.event.addListener(marker, 'click', function(){
+                    infowindow.open(map,marker);
+                });
+                infowindow.open(map,marker);
+            {% endif %}
         {% endif %}
+            {% if widget.pathToKml %}
+                var layer = new google.maps.KmlLayer({
+                    url: '{{ app.request.getSchemeAndHttpHost() ~ asset(widget.getWebKmlPath) }}',
+                    map: map
+                });
+            {% endif %}
     }
     google.maps.event.addDomListener(window, 'load', init_map);
     </script>

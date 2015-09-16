@@ -1,4 +1,46 @@
 {% extends 'VictoireCoreBundle:Widget:new.html.twig' %}
-{% block form %}
-    {{ parent() }}
-{% endblock form %}
+{% trans_default_domain "victoire" %}
+    {% block form_static %}
+    <div id="picker-{{ form.mode.vars.data }}" class="vic-tab-pane {% if form.mode.vars.data == widget.mode %}vic-active{% endif %}">
+        {{ form_start(form) }}
+        <div class="vic-row">
+            <div class="vic-col-md-6">
+                {{ form_row(form.latitude) }}
+                {{ form_row(form.longitude) }}
+                {{ form_row(form.zoom) }}
+            </div>
+            <div class="vic-col-md-6">
+                {{ form_row(form.kmlFile) }}
+                {% if form.vars.value.pathToKml  %}
+                    <div>{{ 'widget_gmap.form.KmlFile.exist.label'|trans }}</div>
+                {% endif %}
+                <div class="vic-row">
+                    <div class="vic-col-md-6">
+                        {{form_row(form.hideMarker)}}
+                    </div>
+                    <div class="vic-col-md-6">
+                        {{form_row(form.asynchronous)}}
+                    </div>
+                </div>
+                {{form_row(form.title)}}
+            </div>
+        </div>
+        {{form_rest(form)}}
+        {{ form_end(form) }}
+    </div>
+
+    <script>
+        displayMarkerOptions();
+        $vic('#static_victoire_widget_form_gmap_hideMarker').change(displayMarkerOptions);
+        function displayMarkerOptions()
+        {
+            var hideElem = $vic('#static_victoire_widget_form_gmap_hideMarker');
+            if(hideElem.is(':checked'))
+            {
+                $vic('#static_victoire_widget_form_gmap_title').parent().parent().addClass('hidden');
+            }else{
+                $vic('#static_victoire_widget_form_gmap_title').parent().parent().removeClass('hidden');
+            }
+        }
+    </script>
+{% endblock form_static %}
