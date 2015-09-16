@@ -82,6 +82,10 @@
         <source>widget_gmap.form.KmlFile.exist.label</source>
         <target state="new">Un fichier est déja présent</target>
       </trans-unit>
+      <trans-unit id="5" resname="widget_gmap.form.kmlFile.label">
+        <source>widget_gmap.form.kmlFile.label</source>
+        <target state="new">Fichier Kml</target>
+      </trans-unit>
     </body>
   </file>
 </xliff>
