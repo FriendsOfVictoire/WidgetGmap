@@ -86,7 +86,7 @@
         {% endif %}
             {% if widget.pathToKml %}
                 var layer = new google.maps.KmlLayer({
-                    url: {{ app.request.getSchemeAndHttpHost() ~ asset(widget.getWebKmlPath) }},
+                    url: '{{ app.request.getSchemeAndHttpHost() ~ asset(widget.getWebKmlPath) }}',
                     map: map
                 });
             {% endif %}
