@@ -1,12 +1,29 @@
-Victoire CMS Gmap Bundle
+#Victoire DCMS Google Maps Bundle
 ============
 
-Need to add a gmap in a victoire cms website ?
+##What is the purpose of this bundle
 
-First you need to have a valid Symfony2 Victoire edition.
-Then you just have to run the following composer command :
+This bundles gives you access to the *Google Maps Widget*.
+This widget can put a dynamic Google Maps within your website with the following settings :
+
+* Latitud
+* Longitud
+* Map's zoom
+* Title of the Map
+* Hide or not the pointer
+* Import of any KML File
+
+##Set Up Victoire
+
+If you haven't already, you can follow the steps to set up Victoire *[here](https://github.com/Victoire/victoire/blob/master/setup.md)*
+
+##Install the bundle
+
+Run the following composer command :
 
     php composer.phar require friendsodvictoire/gmap-widget
+
+##Reminder
 
 Do not forget to add the bundle in your AppKernel !
 
@@ -24,8 +41,8 @@ Do not forget to add the bundle in your AppKernel !
         }
     }
 ```
-## KML
+##KML
 
-The widget generate a bug if the kml is upload on a local project.
-You can test kml with [example](https://developers.google.com/maps/documentation/javascript/examples/layer-kml) given by google.
+The widget generate a bug if the KML file is upload on a local project.
+You can test KML import with this [example](https://developers.google.com/maps/documentation/javascript/examples/layer-kml) given by Google.
 

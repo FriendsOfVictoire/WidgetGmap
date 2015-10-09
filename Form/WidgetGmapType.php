@@ -59,7 +59,7 @@ class WidgetGmapType extends WidgetType
             'data_class'         => 'Victoire\Widget\GmapBundle\Entity\WidgetGmap',
             'widget'             => 'Gmap',
             'translation_domain' => 'victoire',
-            'enctype'           => "multipart/form-data"
+            'enctype'            => "multipart/form-data"
         ));
     }
 

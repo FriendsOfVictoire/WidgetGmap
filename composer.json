@@ -1,10 +1,20 @@
 {
     "name": "friendsofvictoire/gmap-widget",
     "type": "symfony-bundle",
-    "description": "Victoire Gmap widget",
-    "keywords": ["victoire", "Gmap", "widget"],
+    "description": "Victoire Google Maps widget",
+    "keywords": ["DCMS", "Victoire", "widget", "FriendsofVictoire", "Dynamic", "CMS", "Google", "Maps"],
     "homepage": "http://victoire.io",
     "license": "MIT",
+    "authors": [
+        {
+            "name": "Leny Bernard",
+            "email": "leny@victoire.io"
+        },
+        {
+            "name": "Charlie Lucas",
+            "email": "charlie@victoire.io"
+        }
+    ],
     "require": {
         "php"                      : ">=5.3.3",
         "symfony/framework-bundle" : "~2.3",
