@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <xliff xmlns="urn:oasis:names:tc:xliff:document:1.2" xmlns:jms="urn:jms:translation" version="1.2">
-  <file date="2013-11-27T18:15:06Z" source-language="en" target-language="en" datatype="plaintext" original="not.available">
+  <file date="2013-11-27T18:15:06Z" source-language="en" target-language="es" datatype="plaintext" original="not.available">
     <header>
       <tool tool-id="JMSTranslationBundle" tool-name="JMSTranslationBundle" tool-version="1.1.0-DEV"/>
       <note>The source node in most cases contains the sample message as written by the developer. If it looks like a dot-delimitted string such as "form.label.firstname", then the developer has not provided a default message.</note>
@@ -16,31 +16,31 @@
       </trans-unit>
       <trans-unit id="3" resname="widget_gmap.form.latitude.label">
         <source>widget_gmap.form.latitude.label</source>
-        <target state="new">Latitude</target>
+        <target state="new">Latitud</target>
       </trans-unit>
       <trans-unit id="4" resname="widget_gmap.form.longitude.label">
         <source>widget_gmap.form.longitude.label</source>
-        <target state="new">Longitude</target>
+        <target state="new">Longitud</target>
       </trans-unit>
       <trans-unit id="5" resname="widget_gmap.form.zoom.label">
         <source>widget_gmap.form.zoom.label</source>
-        <target state="new">Map's zoom</target>
+        <target state="new">Zoom de la mapa</target>
       </trans-unit>
       <trans-unit id="5" resname="widget_gmap.form.title.label">
         <source>widget_gmap.form.title.label</source>
-        <target state="new">Title</target>
+        <target state="new">Título</target>
       </trans-unit>
       <trans-unit id="5" resname="widget_gmap.form.hideMarker.label">
         <source>widget_gmap.form.hideMarker.label</source>
-        <target state="new">Hide the pointer ?</target>
+        <target state="new">¿ Ocultar el puntero ?</target>
       </trans-unit>
       <trans-unit id="5" resname="widget_gmap.form.kmlFile.label ">
         <source>widget_gmap.form.kmlFile.label </source>
-        <target state="new">Import a KML file</target>
+        <target state="new">Importar un archivo KML</target>
       </trans-unit>
       <trans-unit id="5" resname="widget_gmap.form.KmlFile.exist.label">
         <source>widget_gmap.form.KmlFile.exist.label</source>
-        <target state="new">A file is already loaded</target>
+        <target state="new">Un archivo ya está cargado</target>
       </trans-unit>
     </body>
   </file>

@@ -8,11 +8,11 @@
     <body>
       <trans-unit id="1" resname="widget.gmap.new.action.label">
         <source>widget.gmap.new.action.label</source>
-        <target state="new">Gmap</target>
+        <target state="new">Google Maps</target>
       </trans-unit>
       <trans-unit id="2" resname="modal.form.widget.type.gmap.label">
         <source>modal.form.widget.type.gmap.label</source>
-        <target state="new">Gmap</target>
+        <target state="new">Google Maps</target>
       </trans-unit>
       <trans-unit id="3" resname="widget_gmap.form.latitude.label">
         <source>widget_gmap.form.latitude.label</source>
@@ -24,7 +24,7 @@
       </trans-unit>
       <trans-unit id="5" resname="widget_gmap.form.zoom.label">
         <source>widget_gmap.form.zoom.label</source>
-        <target state="new">Zoom</target>
+        <target state="new">Zoom de la carte</target>
       </trans-unit>
       <trans-unit id="5" resname="widget_gmap.form.title.label">
         <source>widget_gmap.form.title.label</source>
@@ -32,59 +32,15 @@
       </trans-unit>
       <trans-unit id="5" resname="widget_gmap.form.hideMarker.label">
         <source>widget_gmap.form.hideMarker.label</source>
-        <target state="new">Cacher le pointeur?</target>
+        <target state="new">Cacher le pointeur ?</target>
       </trans-unit>
       <trans-unit id="5" resname="widget_gmap.form.kmlFile.label ">
         <source>widget_gmap.form.kmlFile.label </source>
-        <target state="new">Fichier Kml</target>
-      </trans-unit>
-      <trans-unit id="5" resname="widget_gmap.form.containerWidthLG.label">
-        <source>widget_gmap.form.containerWidthLG.label</source>
-        <target state="new">Largeur LG</target>
-      </trans-unit>
-      <trans-unit id="5" resname="widget_gmap.form.containerWidthMD.label">
-        <source>widget_gmap.form.containerWidthMD.label</source>
-        <target state="new">Largeur MD</target>
-      </trans-unit>
-      <trans-unit id="5" resname="widget_gmap.form.containerWidthSM.label">
-        <source>widget_gmap.form.containerWidthSM.label</source>
-        <target state="new">Largeur SM</target>
-      </trans-unit>
-      <trans-unit id="5" resname="widget_gmap.form.containerWidthXS.label">
-        <source>widget_gmap.form.containerWidthXS.label</source>
-        <target state="new">Largeur XS</target>
-      </trans-unit>
-      <trans-unit id="5" resname="widget_gmap.form.containerHeightLG.label">
-        <source>widget_gmap.form.containerHeightLG.label</source>
-        <target state="new">Hauteur LG</target>
-      </trans-unit>
-      <trans-unit id="5" resname="widget_gmap.form.containerHeightMD.label">
-        <source>widget_gmap.form.containerHeightMD.label</source>
-        <target state="new">Hauteur MD</target>
-      </trans-unit>
-      <trans-unit id="5" resname="widget_gmap.form.containerHeightSM.label">
-        <source>widget_gmap.form.containerHeightSM.label</source>
-        <target state="new">Hauteur SM</target>
-      </trans-unit>
-      <trans-unit id="5" resname="widget_gmap.form.containerHeightXS.label">
-        <source>widget_gmap.form.containerHeightXS.label</source>
-        <target state="new">Hauteur XS</target>
-      </trans-unit>
-      <trans-unit id="5" resname="widget_gmap.form.containerHeight.label">
-        <source>widget_gmap.form.containerHeight.label</source>
-        <target state="new">Hauteur</target>
-      </trans-unit>
-      <trans-unit id="5" resname="widget_gmap.form.containerWidth.label">
-        <source>widget_gmap.form.containerWidth.label</source>
-        <target state="new">Largeur</target>
+        <target state="new">Importer un fichier KML</target>
       </trans-unit>
       <trans-unit id="5" resname="widget_gmap.form.KmlFile.exist.label">
         <source>widget_gmap.form.KmlFile.exist.label</source>
-        <target state="new">Un fichier est déja présent</target>
-      </trans-unit>
-      <trans-unit id="5" resname="widget_gmap.form.kmlFile.label">
-        <source>widget_gmap.form.kmlFile.label</source>
-        <target state="new">Fichier Kml</target>
+        <target state="new">Un fichier est déja chargé</target>
       </trans-unit>
     </body>
   </file>
