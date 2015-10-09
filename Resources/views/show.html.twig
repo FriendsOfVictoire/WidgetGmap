@@ -17,6 +17,48 @@
 
         }
 
+        @media (max-width: 767px) {
+            .gmap-widget-{{ widget.id }}, #gmap_canvas_{{ widget.id }} {
+            {% if widget.containerHeightXS %}
+                height: {{ widget.containerHeightXS ?: "250px" }};
+            {% endif %}
+            {% if widget.containerWidthXS %}
+                width: {{ widget.containerWidthXS ?: "290px" }};
+            {% endif %}
+            }
+        }
+
+        @media (min-width: 768px) and (max-width: 991px) {
+            .gmap-widget-{{ widget.id }}, #gmap_canvas_{{ widget.id }} {
+            {% if widget.containerHeightSM %}
+                height: {{ widget.containerHeightSM ?: "250px" }};
+            {% endif %}
+            {% if widget.containerWidthSM %}
+                width: {{ widget.containerWidthSM ?: "290px" }};
+            {% endif %}
+            }
+        }
+        @media (min-width: 992px) and (max-width: 1199px) {
+            .gmap-widget-{{ widget.id }}, #gmap_canvas_{{ widget.id }} {
+            {% if widget.containerHeightMD %}
+                height: {{ widget.containerHeightMD ?: "250px" }};
+            {% endif %}
+            {% if widget.containerWidthMD %}
+                width: {{ widget.containerWidthMD ?: "290px" }};
+            {% endif %}
+            }
+        }
+        @media (min-width: 1200px) {
+            .gmap-widget-{{ widget.id }}, #gmap_canvas_{{ widget.id }} {
+            {% if widget.containerHeightLG %}
+                height: {{ widget.containerHeightLG ?: "250px" }};
+            {% endif %}
+            {% if widget.containerWidthLG %}
+                width: {{ widget.containerWidthLG ?: "290px" }};
+            {% endif %}
+            }
+        }
+
     </style>
 
     <script src='https://maps.googleapis.com/maps/api/js?v=3.exp'></script>
