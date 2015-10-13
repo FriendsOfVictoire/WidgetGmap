@@ -58,7 +58,7 @@
             {% endif %}
             }
         }
-        .controls {
+        #pac-input-{{ widget.id }}.controls {
             margin-top: 10px;
             border: 1px solid transparent;
             border-radius: 2px 0 0 2px;
@@ -82,7 +82,7 @@
             max-width: 300px;
         }
 
-        #pac-input:focus {
+        #pac-input-{{ widget.id }}:focus {
             border-color: #4d90fe;
         }
 
