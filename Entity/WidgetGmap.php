@@ -67,6 +67,21 @@ class WidgetGmap extends Widget
     public $kmlFile;
 
     /**
+     * @var boolean
+     *
+     * @ORM\Column(name="geolocation", type="boolean", nullable=true)
+     */
+    protected $geolocation;
+
+    /**
+     * @var boolean
+     *
+     * @ORM\Column(name="searchBox", type="boolean", nullable=true)
+     */
+    protected $searchBox;
+
+
+    /**
      * @return string
      */
     public function getTitle()
@@ -182,6 +197,50 @@ class WidgetGmap extends Widget
     public function isHideMarker()
     {
         return $this->hideMarker;
+    }
+
+    /**
+     * Set geolocation
+     *
+     * @param string $geolocation
+     */
+    public function setGeolocation($geolocation)
+    {
+        $this->geolocation = $geolocation;
+
+        return $this;
+    }
+
+    /**
+     * Get geolocation
+     *
+     * @return string
+     */
+    public function isGeolocation()
+    {
+        return $this->geolocation;
+    }
+
+    /**
+     * Set searchBox
+     *
+     * @param string $searchBox
+     */
+    public function setSearchBox($searchBox)
+    {
+        $this->searchBox = $searchBox;
+
+        return $this;
+    }
+
+    /**
+     * Get searchBox
+     *
+     * @return string
+     */
+    public function isSearchBox()
+    {
+        return $this->searchBox;
     }
 
     public function getAbsoluteKmlPath()

@@ -30,6 +30,12 @@ class WidgetGmapType extends WidgetType
                     'label' => 'widget_gmap.form.hideMarker.label',
                     'required' => false,
             ))
+            ->add('geolocation', null, array(
+                'label' => 'widget_gmap.form.geolocation.label'
+            ))
+            ->add('searchBox', null, array(
+                'label' => 'widget_gmap.form.searchBox.label'
+            ))
             ->add('title', null, array(
                 'label' => 'widget_gmap.form.title.label',
                 'required' => false,
