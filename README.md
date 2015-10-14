@@ -41,8 +41,14 @@ Do not forget to add the bundle in your AppKernel !
         }
     }
 ```
+
 ##KML
 
 The widget generate a bug if the KML file is upload on a local project.
 You can test KML import with this [example](https://developers.google.com/maps/documentation/javascript/examples/layer-kml) given by Google.
+
+## Loading gmap Api
+
+To fix multiple google maps api call, a javascript is used to call once the api, this javascript trigger an event with google
+map callback to initialize gmaps.
 
