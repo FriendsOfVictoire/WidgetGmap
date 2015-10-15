@@ -2,7 +2,7 @@
 
 //the problem is that google maps api correct callback must be send in request
 var apis = {
-    'gmap': 'https://maps.googleapis.com/maps/api/js?v=3.exp&libraries=places&callback=triggerGmapEvent'
+    'gmap': 'https://maps.googleapis.com/maps/api/js?v=3.exp&libraries=places&callback=triggerGmapEvent&language=' + locale
 };
 
 // list of apis that are loaded
