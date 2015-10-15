@@ -1,15 +1,14 @@
 <?php
+
 namespace Victoire\Widget\GmapBundle\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
-use Victoire\Bundle\WidgetBundle\Entity\Widget;
+use Symfony\Component\Validator\Constraints as Assert;
 use Victoire\Bundle\CoreBundle\Annotations as VIC;
-use Symfony\Component\Validator\Constraints AS Assert;
-use Symfony\Component\HttpFoundation\File\UploadedFile;
-
+use Victoire\Bundle\WidgetBundle\Entity\Widget;
 
 /**
- * WidgetGmap
+ * WidgetGmap.
  *
  * @ORM\Table("vic_widget_gmap")
  * @ORM\Entity
@@ -17,7 +16,6 @@ use Symfony\Component\HttpFoundation\File\UploadedFile;
  */
 class WidgetGmap extends Widget
 {
-
     /**
      * @var string
      *
@@ -67,6 +65,20 @@ class WidgetGmap extends Widget
     public $kmlFile;
 
     /**
+     * @var bool
+     *
+     * @ORM\Column(name="geolocation", type="boolean", nullable=true)
+     */
+    protected $geolocation;
+
+    /**
+     * @var bool
+     *
+     * @ORM\Column(name="searchBox", type="boolean", nullable=true)
+     */
+    protected $searchBox;
+
+    /**
      * @return string
      */
     public function getTitle()
@@ -85,18 +97,17 @@ class WidgetGmap extends Widget
     /**
      * To String function
      * Used in render choices type (Especially in VictoireWidgetRenderBundle)
-     * //TODO Check the generated value and make it more consistent
+     * //TODO Check the generated value and make it more consistent.
      *
-     * @return String
+     * @return string
      */
     public function __toString()
     {
         return 'Gmap #'.$this->id;
     }
 
-
     /**
-     * Set latitude
+     * Set latitude.
      *
      * @param string $latitude
      */
@@ -108,7 +119,7 @@ class WidgetGmap extends Widget
     }
 
     /**
-     * Get latitude
+     * Get latitude.
      *
      * @return string
      */
@@ -118,7 +129,7 @@ class WidgetGmap extends Widget
     }
 
     /**
-     * Set longitude
+     * Set longitude.
      *
      * @param string $longitude
      */
@@ -130,7 +141,7 @@ class WidgetGmap extends Widget
     }
 
     /**
-     * Get longitude
+     * Get longitude.
      *
      * @return string
      */
@@ -140,7 +151,7 @@ class WidgetGmap extends Widget
     }
 
     /**
-     * Set zoom
+     * Set zoom.
      *
      * @param string $zoom
      */
@@ -152,7 +163,7 @@ class WidgetGmap extends Widget
     }
 
     /**
-     * Get zoom
+     * Get zoom.
      *
      * @return string
      */
@@ -161,9 +172,8 @@ class WidgetGmap extends Widget
         return $this->zoom;
     }
 
-
     /**
-     * Set hideMarker
+     * Set hideMarker.
      *
      * @param string $hideMarker
      */
@@ -175,13 +185,57 @@ class WidgetGmap extends Widget
     }
 
     /**
-     * Get hideMarker
+     * Get hideMarker.
      *
      * @return string
      */
     public function isHideMarker()
     {
         return $this->hideMarker;
+    }
+
+    /**
+     * Set geolocation.
+     *
+     * @param string $geolocation
+     */
+    public function setGeolocation($geolocation)
+    {
+        $this->geolocation = $geolocation;
+
+        return $this;
+    }
+
+    /**
+     * Get geolocation.
+     *
+     * @return string
+     */
+    public function isGeolocation()
+    {
+        return $this->geolocation;
+    }
+
+    /**
+     * Set searchBox.
+     *
+     * @param string $searchBox
+     */
+    public function setSearchBox($searchBox)
+    {
+        $this->searchBox = $searchBox;
+
+        return $this;
+    }
+
+    /**
+     * Get searchBox.
+     *
+     * @return string
+     */
+    public function isSearchBox()
+    {
+        return $this->searchBox;
     }
 
     public function getAbsoluteKmlPath()
@@ -197,9 +251,10 @@ class WidgetGmap extends Widget
     protected function getUploadRootDir()
     {
         $dir = __DIR__.'/../../../../../../../web/'.$this->getUploadDir();
-        if(!file_exists($dir)){
+        if (!file_exists($dir)) {
             mkdir(__DIR__.'/../../../../../../../web/'.$this->getUploadDir(), 0777);
         }
+
         return $dir;
     }
 

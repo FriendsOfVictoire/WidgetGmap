@@ -42,6 +42,18 @@
         <source>widget_gmap.form.KmlFile.exist.label</source>
         <target state="new">Un archivo ya está cargado</target>
       </trans-unit>
+      <trans-unit id="5" resname="widget_gmap.form.geolocation.label">
+        <source>widget_gmap.form.geolocation.label</source>
+        <target state="new">¿ Activar geolocalización ?</target>
+      </trans-unit>
+      <trans-unit id="5" resname="widget_gmap.form.searchBox.label">
+        <source>widget_gmap.form.searchBox.label</source>
+        <target state="new">¿ Añadir búsqueda ?</target>
+      </trans-unit>
+      <trans-unit id="5" resname="widget_gmap.show.searchBox.label">
+        <source>widget_gmap.show.searchBox.label</source>
+        <target state="new">Buscar</target>
+      </trans-unit>
     </body>
   </file>
 </xliff>

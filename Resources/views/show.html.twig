@@ -58,39 +58,216 @@
             {% endif %}
             }
         }
+        {% if widget.searchbox %}
+        #pac-input-{{ widget.id }}.controls {
+            margin-top: 10px;
+            border: 1px solid transparent;
+            border-radius: 2px 0 0 2px;
+            box-sizing: border-box;
+            -moz-box-sizing: border-box;
+            height: 32px;
+            outline: none;
+            box-shadow: 0 2px 6px rgba(0, 0, 0, 0.3);
+        }
 
+        #pac-input-{{ widget.id }} {
+            background-color: #fff;
+            font-family: Roboto;
+            font-size: 15px;
+            font-weight: 300;
+            margin-left: 12px;
+            margin-right: 10px;
+            padding: 0 11px 0 13px;
+            text-overflow: ellipsis;
+            width: 300px;
+            max-width: 300px;
+        }
+
+        #pac-input:focus {
+            border-color: #4d90fe;
+        }
+        {% endif %}
     </style>
-
-    <script src='https://maps.googleapis.com/maps/api/js?v=3.exp'></script>
-
+    {% if widget.searchbox %}
+        <input id="pac-input-{{ widget.id }}" class="controls hidden" type="text" placeholder="{{ "widget_gmap.show.searchBox.label"|trans({},'victoire') }}">
+    {% endif %}
     <div class="gmap-widget-{{ widget.id }}"><div id='gmap_canvas_{{ widget.id }}'></div>
         <style></style></div>
-    <script type='text/javascript'>
-        function init_map(){
-        var myOptions = {
-            zoom:{{ zoom }},center:new google.maps.LatLng({{ latitude }}, {{ longitude }}),
-            mapTypeId: google.maps.MapTypeId.ROADMAP
-        };
-        map = new google.maps.Map(document.getElementById('gmap_canvas_{{widget.id}}'), myOptions);
-        {% if not widget.hideMarker %}
+    <script>
+        // When Api google is loaded we can init the map
+        $(document).on( "gmap", function( ) {
+            init_map_{{ widget.id }}();
+        });
+
+        /** init a map */
+        function init_map_{{ widget.id }}(){
+            //default options
+            var myOptions = {
+                zoom:{{ zoom }},
+                center:new google.maps.LatLng({{ latitude }},{{ longitude }}),
+                mapTypeId: google.maps.MapTypeId.ROADMAP
+            };
+
+            // generate gmap
+            map = new google.maps.Map(document.getElementById('gmap_canvas_{{widget.id}}'), myOptions);
+
+            //generate a search box if needed
+            {% if widget.searchbox %}
+            createSearchBox{{ widget.id }}(map);
+            {% endif %}
+
+            //disable options form width < md
+            if(document.documentElement.clientWidth < 992 ){
+                map.setOptions({
+                    draggable: false,
+                    scrollwheel: false,
+                    disableDoubleClickZoom: true,
+                    disableDefaultUI: true,
+                });
+            }
+
+            //show marker if needed
+            {% if not widget.hideMarker %}
             marker = new google.maps.Marker({map: map,position: new google.maps.LatLng({{ latitude }},{{ longitude }})});
+
+            //add title for the marker
             {% if widget.title %}
-                infowindow = new google.maps.InfoWindow({
-                    content: "{{ title }}"
-                });
-                google.maps.event.addListener(marker, 'click', function(){
-                    infowindow.open(map,marker);
-                });
+            infowindow = new google.maps.InfoWindow({
+                content: "{{ title }}"
+            });
+            google.maps.event.addListener(marker, 'click', function(){
                 infowindow.open(map,marker);
+            });
+            infowindow.open(map,marker);
             {% endif %}
-        {% endif %}
+            {% endif %}
+
+            //add kml file if needed
             {% if widget.pathToKml %}
-                var layer = new google.maps.KmlLayer({
-                    url: '{{ app.request.getSchemeAndHttpHost() ~ asset(widget.getWebKmlPath) }}',
-                    map: map
-                });
+            var layer = new google.maps.KmlLayer({
+                url: '{{ app.request.getSchemeAndHttpHost() ~ asset(widget.getWebKmlPath) }}',
+                map: map,
+                preserveViewport: true
+            })
             {% endif %}
-    }
-    google.maps.event.addDomListener(window, 'load', init_map);
+
+            //activate geolocation
+            {% if widget.geolocation %}
+            if (navigator.geolocation)
+            {
+                navigator.geolocation.getCurrentPosition(
+                        setMapPosition,
+                        null,
+                        {enableHighAccuracy:true}
+                );
+
+            }
+            {% endif %}
+
+            //recalculate gmap if invisible during generation
+            $(document).on('shown.bs.tab', 'a[data-toggle="tab"]', function (e) {
+                if($('#gmap_canvas_{{widget.id}}').is(":visible"))
+                {
+                    //trigger resize event because in a tab map is 0x0
+                    google.maps.event.trigger(map, 'resize');
+                    {% if widget.geolocation %}
+                    if (navigator.geolocation)
+                    {
+                        navigator.geolocation.getCurrentPosition(
+                                setMapPosition,
+                                null,
+                                {enableHighAccuracy:true}
+                        );
+                    }
+                    {% endif %}
+                }
+            });
+
+            //display search box when map is ready
+            {% if widget.searchbox %}
+            google.maps.event.addListener(map, 'tilesloaded', function(){
+                displaySearchBox{{ widget.id }}();
+            });
+            {% endif %}
+        }
+        /** set the position for the map and place a marker if needed */
+        function setMapPosition(position){
+            {% if not widget.hideMarker %}
+            var marker = new google.maps.Marker({
+                position: new google.maps.LatLng(position.coords.latitude, position.coords.longitude),
+                map: map
+            });
+            //set center
+            map.setCenter(new google.maps.LatLng(position.coords.latitude, position.coords.longitude));
+            {% endif %}
+
+        }
+
+        /** From Google MAps api Search Box documentation */
+        function createSearchBox{{ widget.id }}(map)
+        {
+            //place searchbox
+            var input = document.getElementById('pac-input-{{ widget.id }}');
+            var searchBox = new google.maps.places.SearchBox(input);
+            map.controls[google.maps.ControlPosition.TOP_LEFT].push(input);
+
+            //if bounds change update search box
+            map.addListener('bounds_changed', function() {
+                searchBox.setBounds(map.getBounds());
+            });
+
+            var markers = [];
+            //places markers for search
+            searchBox.addListener('places_changed', function() {
+                var places = searchBox.getPlaces();
+
+                if (places.length == 0) {
+                    return;
+                }
+
+                markers.forEach(function(marker) {
+                    marker.setMap(null);
+                });
+                markers = [];
+                var bounds = new google.maps.LatLngBounds();
+                places.forEach(function(place) {
+                    markers.push(new google.maps.Marker({
+                        map: map,
+                        title: place.name,
+                        position: place.geometry.location
+                    }));
+
+                    if (place.geometry.viewport) {
+                        bounds.union(place.geometry.viewport);
+                    } else {
+                        bounds.extend(place.geometry.location);
+                    }
+                });
+                map.fitBounds(bounds);
+
+            });
+        }
+        /** display search box */
+        function displaySearchBox{{ widget.id }}()
+        {
+
+            var input =  $('#pac-input-{{ widget.id }}');
+            //display search box manually
+            input.removeClass('hidden');
+
+            //if searchbox is too big for the map canvas
+            if($("#gmap_canvas_{{ widget.id }}").width() < input.position().left + input.outerWidth(true))
+            {
+                //set search width with the maximum we can have
+                var searchBoxWidth = $("#gmap_canvas_{{ widget.id }}").width() - input.position().left - (input.outerWidth(true) - input.width());
+                input.width(searchBoxWidth);
+                //if screen < md only search box is visible
+                if(document.documentElement.clientWidth < 992 ){
+                    input.css('width', '80%');
+                    input.css('margin-left', '10%');
+                }
+            }
+
+        }
     </script>
 {% endblock content %}

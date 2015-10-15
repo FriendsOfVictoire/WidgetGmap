@@ -5,7 +5,7 @@
         {
             "map-widget":
                 [
-                    "https://maps.googleapis.com/maps/api/js?v=3.exp"
+                    "@VictoireWidgetGmapBundle/Resources/public/js/gmapApi.js"
                 ]
         }
     }
