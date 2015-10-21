@@ -293,7 +293,7 @@ class WidgetGmap extends Widget
      */
     public function removeUpload()
     {
-        if ($file = $this->getAbsoluteKmlPath()) {
+        if (($file = $this->getAbsoluteKmlPath()) && file_exists($this->getAbsoluteKmlPath())) {
             unlink($file);
         }
     }
