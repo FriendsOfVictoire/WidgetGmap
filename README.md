@@ -1,4 +1,4 @@
-#Victoire DCMS Google Maps Bundle
+Victoire DCMS Google Maps Bundle
 ============
 
 ##What is the purpose of this bundle
@@ -21,7 +21,7 @@ If you haven't already, you can follow the steps to set up Victoire *[here](http
 
 Run the following composer command :
 
-    php composer.phar require friendsodvictoire/gmap-widget
+    php composer.phar require friendsofvictoire/gmap-widget
 
 ###Reminder
 
