@@ -1,14 +1,15 @@
 {
     "name": "friendsofvictoire/gmap-widget",
     "type": "symfony-bundle",
-    "description": "Victoire Google Maps widget",
+    "description": "Victoire DCMS Google Maps widget",
     "keywords": ["DCMS", "Victoire", "widget", "FriendsofVictoire", "Dynamic", "CMS", "Google", "Maps"],
     "homepage": "http://victoire.io",
     "license": "MIT",
     "authors": [
         {
             "name": "Leny Bernard",
-            "email": "leny@victoire.io"
+            "email": "leny@victoire.io",
+            "homepage": "http://github.com/lenybernard"
         },
         {
             "name": "Charlie Lucas",

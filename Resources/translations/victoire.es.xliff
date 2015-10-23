@@ -28,7 +28,7 @@
       </trans-unit>
       <trans-unit id="5" resname="widget_gmap.form.title.label">
         <source>widget_gmap.form.title.label</source>
-        <target state="new">Título</target>
+        <target state="new">Título del puntero</target>
       </trans-unit>
       <trans-unit id="5" resname="widget_gmap.form.hideMarker.label">
         <source>widget_gmap.form.hideMarker.label</source>
@@ -53,6 +53,10 @@
       <trans-unit id="5" resname="widget_gmap.show.searchBox.label">
         <source>widget_gmap.show.searchBox.label</source>
         <target state="new">Buscar</target>
+      </trans-unit>
+      <trans-unit id="13" resname="widget_gmap.form.zoom.placeholder">
+        <source>widget_gmap.form.zoom.placeholder</source>
+        <target state="new">entre 0 (el mundo) y 21 (al nivel de las calles)</target>
       </trans-unit>
     </body>
   </file>

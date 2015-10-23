@@ -47,6 +47,7 @@ class WidgetGmapType extends WidgetType
             ])
             ->add('zoom', null, [
                     'label' => 'widget_gmap.form.zoom.label',
+                    'attr'  => ['placeholder' => 'widget_gmap.form.zoom.placeholder'],
             ]);
         parent::buildForm($builder, $options);
     }

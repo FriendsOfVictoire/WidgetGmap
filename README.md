@@ -23,7 +23,7 @@ Run the following composer command :
 
     php composer.phar require friendsodvictoire/gmap-widget
 
-##Reminder
+###Reminder
 
 Do not forget to add the bundle in your AppKernel !
 
@@ -47,8 +47,8 @@ Do not forget to add the bundle in your AppKernel !
 The widget generate a bug if the KML file is upload on a local project.
 You can test KML import with this [example](https://developers.google.com/maps/documentation/javascript/examples/layer-kml) given by Google.
 
-## Loading gmap Api
+##Multiple widget & Google Maps API
 
-To fix multiple google maps api call, a javascript is used to call once the api, this javascript trigger an event with google
-map callback to initialize gmaps.
+If you use several widgets Google Maps on the same page, in order to prevent each one of them to make Google Maps API call, a javascript is used to call once and for all thhe API.
+This javascript triggers an event with only one Google Maps callback to initialize the widgets.
 
