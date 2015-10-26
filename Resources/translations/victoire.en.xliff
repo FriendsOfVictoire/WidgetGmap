@@ -24,35 +24,39 @@
       </trans-unit>
       <trans-unit id="5" resname="widget_gmap.form.zoom.label">
         <source>widget_gmap.form.zoom.label</source>
-        <target state="new">Map's zoom</target>
+        <target state="new">Zoom of the map</target>
       </trans-unit>
-      <trans-unit id="5" resname="widget_gmap.form.title.label">
+      <trans-unit id="6" resname="widget_gmap.form.title.label">
         <source>widget_gmap.form.title.label</source>
-        <target state="new">Title</target>
+        <target state="new">Pointer's title</target>
       </trans-unit>
-      <trans-unit id="5" resname="widget_gmap.form.hideMarker.label">
+      <trans-unit id="7" resname="widget_gmap.form.hideMarker.label">
         <source>widget_gmap.form.hideMarker.label</source>
         <target state="new">Hide the pointer ?</target>
       </trans-unit>
-      <trans-unit id="5" resname="widget_gmap.form.kmlFile.label ">
+      <trans-unit id="8" resname="widget_gmap.form.kmlFile.label ">
         <source>widget_gmap.form.kmlFile.label </source>
         <target state="new">Import a KML file</target>
       </trans-unit>
-      <trans-unit id="5" resname="widget_gmap.form.KmlFile.exist.label">
+      <trans-unit id="9" resname="widget_gmap.form.KmlFile.exist.label">
         <source>widget_gmap.form.KmlFile.exist.label</source>
         <target state="new">A file is already loaded</target>
       </trans-unit>
-      <trans-unit id="5" resname="widget_gmap.form.geolocation.label">
+      <trans-unit id="10" resname="widget_gmap.form.geolocation.label">
         <source>widget_gmap.form.geolocation.label</source>
         <target state="new">Activate geolocation ?</target>
       </trans-unit>
-      <trans-unit id="5" resname="widget_gmap.form.searchBox.label">
+      <trans-unit id="11" resname="widget_gmap.form.searchBox.label">
         <source>widget_gmap.form.searchBox.label</source>
         <target state="new">Add search box ?</target>
       </trans-unit>
-      <trans-unit id="5" resname="widget_gmap.show.searchBox.label">
+      <trans-unit id="12" resname="widget_gmap.show.searchBox.label">
         <source>widget_gmap.show.searchBox.label</source>
         <target state="new">Search</target>
+      </trans-unit>
+      <trans-unit id="13" resname="widget_gmap.form.zoom.placeholder">
+        <source>widget_gmap.form.zoom.placeholder</source>
+        <target state="new">between 0 (the world) and 21 (street level)</target>
       </trans-unit>
     </body>
   </file>
