@@ -3,7 +3,7 @@
 namespace Victoire\Widget\GmapBundle\Form;
 
 use Symfony\Component\Form\FormBuilderInterface;
-use Symfony\Component\OptionsResolver\OptionsResolverInterface;
+use Symfony\Component\OptionsResolver\OptionsResolver;
 use Victoire\Bundle\CoreBundle\Form\WidgetType;
 
 /**
@@ -53,13 +53,11 @@ class WidgetGmapType extends WidgetType
     }
 
     /**
-     * bind form to WidgetGmap entity.
-     *
-     * @param OptionsResolverInterface $resolver
+     * {@inheritdoc}
      */
-    public function setDefaultOptions(OptionsResolverInterface $resolver)
+    public function configureOptions(OptionsResolver $resolver)
     {
-        parent::setDefaultOptions($resolver);
+        parent::configureOptions($resolver);
 
         $resolver->setDefaults([
             'data_class'         => 'Victoire\Widget\GmapBundle\Entity\WidgetGmap',
@@ -67,15 +65,5 @@ class WidgetGmapType extends WidgetType
             'translation_domain' => 'victoire',
             'enctype'            => 'multipart/form-data',
         ]);
-    }
-
-    /**
-     * get form name.
-     *
-     * @return string The form name
-     */
-    public function getName()
-    {
-        return 'victoire_widget_form_gmap';
     }
 }
