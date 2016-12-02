@@ -42,6 +42,13 @@ Do not forget to add the bundle in your AppKernel !
     }
 ```
 
+### Parameters
+Add your api key in your app parameters
+
+```yaml
+    victoire_widget_gmap.api_key: xxx
+```
+
 ##KML
 
 The widget generate a bug if the KML file is upload on a local project.

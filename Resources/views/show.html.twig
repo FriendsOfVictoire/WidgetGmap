@@ -97,6 +97,7 @@
     <script>
         // When Api google is loaded we can init the map
         $(document).on( "gmap", function( ) {
+            gmapApiKey = "{{ gmapApiKey }}";
             init_map_{{ widget.id }}();
         });
 
