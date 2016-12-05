@@ -95,9 +95,10 @@
         <div id='gmap_canvas_{{ widget.id }}'></div>
     </div>
     <script>
+        gmapApiKey = "{{ gmapApiKey }}";
+
         // When Api google is loaded we can init the map
         $(document).on( "gmap", function( ) {
-            gmapApiKey = "{{ gmapApiKey }}";
             init_map_{{ widget.id }}();
         });
 
@@ -272,4 +273,9 @@
 
         }
     </script>
+
+    {% javascripts "@VictoireWidgetGmapBundle/Resources/public/js/gmapApi.js" %}
+    <script type="text/javascript" src="{{ asset_url }}"></script>
+    {% endjavascripts %}
+
 {% endblock content %}
