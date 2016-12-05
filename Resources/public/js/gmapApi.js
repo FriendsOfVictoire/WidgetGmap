@@ -6,7 +6,9 @@ var apis = {
 };
 
 // list of apis that are loaded
-var loadedApis = [];
+if(loadedGoogleApis === undefined) {
+    var loadedGoogleApis = [];
+}
 
 //we load apis
 window.onload = loadApis(apis);
@@ -14,13 +16,13 @@ window.onload = loadApis(apis);
 function loadApis(apis)
 {
     for(var apiName in apis){
-        if((loadedApis.indexOf(apiName)))
+        if((loadedGoogleApis.indexOf(apiName)))
         {
             //we add script to load them
             //TODO send a callback that work correctly when api is fully load
 
             addScript(apis[apiName]);
-            loadedApis.push(apiName);
+            loadedGoogleApis.push(apiName);
         }
     };
 }
