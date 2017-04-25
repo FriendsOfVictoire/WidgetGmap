@@ -26,31 +26,31 @@
         <source>widget_gmap.form.zoom.label</source>
         <target state="new">Zoom de la mapa</target>
       </trans-unit>
-      <trans-unit id="5" resname="widget_gmap.form.title.label">
+      <trans-unit id="6" resname="widget_gmap.form.title.label">
         <source>widget_gmap.form.title.label</source>
         <target state="new">Título del puntero</target>
       </trans-unit>
-      <trans-unit id="5" resname="widget_gmap.form.hideMarker.label">
+      <trans-unit id="7" resname="widget_gmap.form.hideMarker.label">
         <source>widget_gmap.form.hideMarker.label</source>
         <target state="new">¿ Ocultar el puntero ?</target>
       </trans-unit>
-      <trans-unit id="5" resname="widget_gmap.form.kmlFile.label ">
+      <trans-unit id="8" resname="widget_gmap.form.kmlFile.label ">
         <source>widget_gmap.form.kmlFile.label </source>
         <target state="new">Importar un archivo KML</target>
       </trans-unit>
-      <trans-unit id="5" resname="widget_gmap.form.KmlFile.exist.label">
+      <trans-unit id="9" resname="widget_gmap.form.KmlFile.exist.label">
         <source>widget_gmap.form.KmlFile.exist.label</source>
         <target state="new">Un archivo ya está cargado</target>
       </trans-unit>
-      <trans-unit id="5" resname="widget_gmap.form.geolocation.label">
+      <trans-unit id="10" resname="widget_gmap.form.geolocation.label">
         <source>widget_gmap.form.geolocation.label</source>
         <target state="new">¿ Activar geolocalización ?</target>
       </trans-unit>
-      <trans-unit id="5" resname="widget_gmap.form.searchBox.label">
+      <trans-unit id="11" resname="widget_gmap.form.searchBox.label">
         <source>widget_gmap.form.searchBox.label</source>
         <target state="new">¿ Añadir búsqueda ?</target>
       </trans-unit>
-      <trans-unit id="5" resname="widget_gmap.show.searchBox.label">
+      <trans-unit id="12" resname="widget_gmap.show.searchBox.label">
         <source>widget_gmap.show.searchBox.label</source>
         <target state="new">Buscar</target>
       </trans-unit>
